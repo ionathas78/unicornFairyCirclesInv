@@ -33,27 +33,27 @@ app.get("/inv", function(req, res) {
         res.status(503).end();
       };
 
-      res.send(resp.items);
+      // res.send(resp.items);
 
-      // for (let i = 0; i < resp.items.length; i++) {
-      //     let item = resp.items[i];
+      for (let i = 0; i < resp.items.length; i++) {
+          let item = resp.items[i];
 
-      //     if ((item !== undefined) && 
-      //                 (item.item_name.toLowerCase().indexOf("buttons") > -1)) {
-      //         itemArray.push({
-      //             name: item.item_name,
-      //             SKU: item.sku,
-      //             // image: "./images/" + item.sku + ".jpg",
-      //             image: _PLACEHOLDER_IMAGE,
-      //             stock: item.available_stock,
-      //             unit: item.unit
-      //         });
-      //     };
-      // };
+          if ((item !== undefined) && 
+                      (item.item_name.toLowerCase().indexOf("buttons") > -1)) {
+              itemArray.push({
+                  name: item.item_name,
+                  SKU: item.sku,
+                  // image: "./images/" + item.sku + ".jpg",
+                  image: _PLACEHOLDER_IMAGE,
+                  stock: item.available_stock,
+                  unit: item.unit
+              });
+          };
+      };
       
-      // itemArray.sort((itemA, itemB) => itemA.sku > itemB.sku);
+      itemArray.sort((itemA, itemB) => itemA.sku > itemB.sku);
 
-      // res.json(JSON.stringify(itemArray));
+      res.json(JSON.stringify(itemArray));
     });
   };
 });

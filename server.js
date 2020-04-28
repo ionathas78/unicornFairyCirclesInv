@@ -33,8 +33,8 @@ app.get("/inv", function(req, res) {
         res.status(503).end();
       };
 
-      res.send(resp);
-      
+      res.json(resp);
+
       // for (let i = 0; i < resp.items.length; i++) {
       //     let item = resp.items[i];
 

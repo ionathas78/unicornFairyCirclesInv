@@ -23,13 +23,13 @@ app.get("/inv", function(req, res) {
   sendAjax_CORS(queryString);
 
   function sendAjax_CORS(queryString) {
-    queryString = _CORS_SERVER + queryString;
+    // queryString = _CORS_SERVER + queryString;
 
     https.get(queryString, resp => {
       let itemArray = [];
+      console.log(resp);
 
       if (!resp || !resp.items) {
-        console.log(resp);
         res.status(503).end();
       };
 

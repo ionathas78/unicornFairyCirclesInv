@@ -28,6 +28,10 @@ app.get("/inv", function(req, res) {
     https.get(queryString, resp => {
       let itemArray = [];
 
+      if (!resp) {
+        res.status(503).end();
+      };
+
       for (let i = 0; i < resp.items.length; i++) {
           let item = resp.items[i];
 

@@ -33,7 +33,7 @@ app.get("/inv", function(req, res) {
         res.status(503).end();
       };
 
-      res.send(resp.statusCode);
+      res.send(resp.body);
 
       // for (let i = 0; i < resp.items.length; i++) {
       //     let item = resp.items[i];

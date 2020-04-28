@@ -19,7 +19,7 @@ app.get("/", function(req, res) {res.status(200).send("server listening...")});
 
 app.get("/inv", function(req, res) {
  
-  var queryString = `https://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
+  var queryString = `inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
   sendAjax_CORS(queryString);
 
   function sendAjax_CORS(queryString) {

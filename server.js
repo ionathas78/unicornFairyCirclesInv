@@ -25,7 +25,6 @@ app.get("/inv", function(req, res) {
     queryString = _CORS_SERVER + queryString;
 
     https.get(queryString, resp => {
-      let olTag = $("<ul>");
       let itemArray = [];
 
       for (let i = 0; i < resp.items.length; i++) {

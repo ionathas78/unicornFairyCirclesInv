@@ -27,13 +27,13 @@ app.get("/inv", function(req, res) {
 
     https.get(queryString, resp => {
       let itemArray = [];
-      console.log(resp);
+      // console.log(resp);
 
       if (!resp || !resp.items) {
-        // res.status(503).end();
+        res.status(503).end();
       };
 
-      res.send(resp.items);
+      // res.send(resp.items);
 
       for (let i = 0; i < resp.items.length; i++) {
           let item = resp.items[i];
@@ -43,8 +43,8 @@ app.get("/inv", function(req, res) {
               itemArray.push({
                   name: item.item_name,
                   SKU: item.sku,
-                  // image: "./images/" + item.sku + ".jpg",
-                  image: _PLACEHOLDER_IMAGE,
+                  image: "./images/" + item.sku + ".jpg",
+                  // image: _PLACEHOLDER_IMAGE,
                   stock: item.available_stock,
                   unit: item.unit
               });

@@ -28,7 +28,8 @@ app.get("/inv", function(req, res) {
     https.get(queryString, resp => {
       let itemArray = [];
 
-      if (!resp) {
+      if (!resp || !resp.items) {
+        console.log(resp);
         res.status(503).end();
       };
 

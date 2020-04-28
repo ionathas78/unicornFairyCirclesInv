@@ -30,10 +30,10 @@ app.get("/inv", function(req, res) {
       console.log(resp);
 
       if (!resp || !resp.items) {
-        res.status(503).end();
+        // res.status(503).end();
       };
 
-      // res.send(resp.items);
+      res.send(resp.items);
 
       for (let i = 0; i < resp.items.length; i++) {
           let item = resp.items[i];

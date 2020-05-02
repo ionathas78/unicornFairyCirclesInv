@@ -24,9 +24,10 @@ app.get("/inv", function(req, res) {
   sendAjax_CORS('https://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}');
 
   function sendAjax_CORS(queryString) {
-    queryString = req.protocol + _CORS_SERVER + queryString;
+    let queryURL = req.protocol + _CORS_SERVER + queryString;
+    console.log(queryURL);
 
-    https.get(queryString, resp => {
+    https.get("https" + _CORS_SERVER + queryString, resp => {
       let itemArray = [];
       // console.log(resp);
 

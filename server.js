@@ -59,5 +59,5 @@ app.get("/inv", function(req, res) {
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, () => {
   // Log (server-side) when our server has started
-  console.log(`Server listening on: ${req.protocol}://localhost: ${PORT}`);
+  console.log(`Server listening on: https://peaceful-caverns-19894.herokuapp.com:${PORT}`);
 });

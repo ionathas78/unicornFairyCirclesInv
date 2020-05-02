@@ -11,19 +11,18 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const _CORS_SERVER = "https://polar-bayou-73801.herokuapp.com/";
-const _PLACEHOLDER_IMAGE = "http://via.placeholder.com/100";
+const _CORS_SERVER = "://polar-bayou-73801.herokuapp.com/";
+const _PLACEHOLDER_IMAGE = "://via.placeholder.com/100";
 
 // Root get route
-app.get("/", function(req, res) {res.status(200).send("server listening...")});
+app.get("/", function(req, res) {res.status(200).send("server listening on PORT:" + PORT)});
 
 app.get("/inv", function(req, res) {
- 
-  var queryString = `inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
+  var queryString = `${req.protocol}://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
   sendAjax_CORS(queryString);
 
   function sendAjax_CORS(queryString) {
-    queryString = _CORS_SERVER + queryString;
+    queryString = req.protocol + _CORS_SERVER + queryString;
 
     https.get(queryString, resp => {
       let itemArray = [];
@@ -32,8 +31,6 @@ app.get("/inv", function(req, res) {
       if (!resp || !resp.items) {
         res.status(503).end();
       };
-
-      // res.send(resp.items);
 
       for (let i = 0; i < resp.items.length; i++) {
           let item = resp.items[i];
@@ -44,7 +41,7 @@ app.get("/inv", function(req, res) {
                   name: item.item_name,
                   SKU: item.sku,
                   image: "./images/" + item.sku + ".jpg",
-                  // image: _PLACEHOLDER_IMAGE,
+                  // image: req.protocol + _PLACEHOLDER_IMAGE,
                   stock: item.available_stock,
                   unit: item.unit
               });
@@ -58,13 +55,9 @@ app.get("/inv", function(req, res) {
   };
 });
 
-  // Post route -> back to home
-// app.post("/", function(req, res) {
-//     res.redirect("/");
-// });
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, () => {
   // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log(`Server listening on: ${req.protocol}://localhost: ${PORT}`);
 });

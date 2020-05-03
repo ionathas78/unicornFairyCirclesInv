@@ -23,9 +23,9 @@ app.get("/inv", function(req, res) {
   // sendAjax_CORS(queryString);
   // sendAjax_CORS('https://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}');
 
-  https.get("https" + _CORS_SERVER + queryString, resp => {
+  https.get(queryString, resp => {
     let itemArray = [];
-    // console.log(resp);
+    console.log(resp);
 
     if (!resp || !resp.items) {
       res.status(503).send("No luck...");

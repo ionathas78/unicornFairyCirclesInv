@@ -50,6 +50,7 @@ app.get("/inv", function(req, res) {
     itemArray.sort((itemA, itemB) => itemA.sku > itemB.sku);
 
     res.json(JSON.stringify(itemArray));
+  });
 });
 
 

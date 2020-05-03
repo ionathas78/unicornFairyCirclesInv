@@ -21,7 +21,7 @@ app.get("/inv", function(req, res) {
   var queryString = `${req.protocol}://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
   console.log(queryString);
   // sendAjax_CORS(queryString);
-  sendAjax_CORS('https://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}');
+  // sendAjax_CORS('https://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}');
 
   function sendAjax_CORS(queryString) {
     let queryURL = req.protocol + _CORS_SERVER + queryString;
@@ -32,7 +32,7 @@ app.get("/inv", function(req, res) {
       // console.log(resp);
 
       if (!resp || !resp.items) {
-        res.status(503).end();
+        res.status(503).send("No luck...");
       };
 
       for (let i = 0; i < resp.items.length; i++) {

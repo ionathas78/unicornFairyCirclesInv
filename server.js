@@ -26,7 +26,7 @@ app.get("/inv", function(req, res) {
 
   https.get(queryString, resp => {
     let itemArray = [];
-    console.log(resp);
+    console.log("response:", resp);
 
     if (!resp || !resp.items) {
       res.status(503).send("No luck...");

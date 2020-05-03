@@ -18,7 +18,7 @@ const _PLACEHOLDER_IMAGE = "://via.placeholder.com/100";
 app.get("/", function(req, res) {res.status(200).send("server listening on PORT:" + PORT)});
 
 app.get("/inv", function(req, res) {
-  var queryString = `${req.protocol}://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
+  var queryString = `${req.protocol}://inventory.zoho.com/api/v1/items?q=button&authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}`
   console.log(queryString);
   // sendAjax_CORS(queryString);
   // sendAjax_CORS('https://inventory.zoho.com/api/v1/items?authtoken=${process.env.AUTH}&organization_id=${process.env.ORG}');
